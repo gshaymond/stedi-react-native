@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -13,6 +13,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App(props) {
+
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -54,6 +57,19 @@ export default function App(props) {
     </NavigationContainer>
   );
 
+  if(userLoggedIn){
+    return(
+      <NavigationContainer>
+
+      </NavigationContainer>
+    );
+  }  else {
+    return(
+      <Login>
+
+      </Login>
+    )
+  }
 
 }
 
