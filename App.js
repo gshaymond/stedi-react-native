@@ -8,6 +8,7 @@ import Home from './Home.js';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Login from "./Login.js"
 
 // import Icons from "./Icons";
 const Tab = createMaterialBottomTabNavigator();
@@ -15,7 +16,7 @@ const Tab = createMaterialBottomTabNavigator();
 export default function App(props) {
 
   const [userLoggedIn, setUserLoggedIn] = useState(false);
-
+  if(userLoggedIn){
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -57,21 +58,16 @@ export default function App(props) {
     </NavigationContainer>
   );
 
-  if(userLoggedIn){
-    return(
-      <NavigationContainer>
-
-      </NavigationContainer>
-    );
+  
   }  else {
     return(
       <Login>
 
       </Login>
     )
-  }
+  }}
 
-}
+
 
 
 const styles = StyleSheet.create({

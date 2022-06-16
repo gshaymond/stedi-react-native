@@ -1,5 +1,16 @@
-import React from "react";
+import {useState} from "react";
 import { SafeAreaView, StyleSheet, TextInput, Text, TouchableOpacity} from "react-native";
+
+const sendText= async (phoneNumbe)=>{
+  console.log("PhoneNumber: ", phoneNumber);
+  await fetch("https://dev.stedi.me/twofactorlogin/"+phoneNumber,{
+    mothod: 'POST',
+    headers:{
+      'content-type':'application/text'
+    }
+  });
+}
+
 
 const Login = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -14,22 +25,29 @@ const Login = () => {
         placeholder = "801-386-6640"
         placeholderTextColor='#000'
       />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={()=>{console.log("Text has been sent.")}}
+      >
+        <Text>Send Text</Text>
+      </TouchableOpacity>
       <TextInput
         style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
+        onChangeText={setOneTimePassword}
+        value={oneTimePassword}
         placeholder="1234"
         placeholderTextColor='#000'
         keyboardType = "numeric"
-        swcureTestEntr = {true}
+        secureTextEntry = {true}
       />
       <TouchableOpacity
         style={styles.button}
         onPress={()=>{console.log("Login buttom was clicked")}}
       >
         <Text>Login</Text>
+
       </TouchableOpacity>
-    </SafeAreaView>
+      </SafeAreaView>
   );
 };
 
@@ -42,6 +60,11 @@ const styles = StyleSheet.create({
   },
   margin: {
     marginTop:100
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 10
   }
 });
 
