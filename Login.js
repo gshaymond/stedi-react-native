@@ -1,5 +1,6 @@
 import {useState} from "react";
 import { SafeAreaView, StyleSheet, TextInput, Text, TouchableOpacity} from "react-native";
+import { clickProps } from "react-native-web/dist/cjs/modules/forwardedProps";
 
 const sendText= async (phoneNumber)=>{
   console.log("PhoneNumber: ", phoneNumber);
@@ -25,7 +26,7 @@ const getToken = async ({phoneNumber, oneTimePassword}) =>{
 }
 
 
-const Login = () => {
+const Login = (props) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [oneTimePassword, setOneTimePassword] = useState(null);
 
@@ -55,7 +56,9 @@ const Login = () => {
       />
       <TouchableOpacity
         style={styles.button}
-        onPress={()=>{console.log("Login buttom was clicked")}}
+        onPress={()=>{
+          sendText({phoneNumber, oneTimePassword, setUserLoggedIn:clickProps.setUserLoggedIn});
+        }}
       >
         <Text>Login</Text>
 
