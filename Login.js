@@ -54,7 +54,7 @@ const Login = (props) => {
         keyboardType = "numeric"
         secureTextEntry = {true}
       />
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.button}
         onPress={()=>{
           sendText({phoneNumber, oneTimePassword, setUserLoggedIn:clickProps.setUserLoggedIn});
@@ -62,6 +62,14 @@ const Login = (props) => {
       >
         <Text>Login</Text>
 
+      </TouchableOpacity> */}
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          props.setUserLoggedIn(true);
+        }}
+      >
+        <Text>Login</Text>
       </TouchableOpacity>
       </SafeAreaView>
   );

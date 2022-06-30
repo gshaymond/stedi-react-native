@@ -15,7 +15,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 export default function App(props) {
 
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(true);
   if(userLoggedIn){
   return (
     <NavigationContainer>
