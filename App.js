@@ -27,7 +27,7 @@ export default function App(props) {
       >
         <Tab.Screen
           name='Home'
-          children={()=><Home loggedInUser='gshaymond1@gmail.com'/>}
+          children={()=><Home loggedInUser={userName}/>}
           // component={Home}
           options={{
             tabBarLabel: 'Home',

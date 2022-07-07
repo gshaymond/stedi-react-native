@@ -27,6 +27,11 @@ const getToken = async ({phoneNumber, oneTimePassword,setUserLoggedIn, setUserNa
   }
   const tokenResponseString = await tokenResponse.text();
   console.log("Token: ", tokenResponseString);
+
+  const userName = await fetch('https://dev.stedi.me/validate/'+tokenResponseString);
+  const userNameString = await userName.text();
+  console.log("User Name", userNameString);
+  setUserName(userNameString);
 }
 
 
